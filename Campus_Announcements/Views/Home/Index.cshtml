@@ -1,0 +1,26 @@
+﻿@model Campus_Announcements.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h1>Announcements</h1>
+
+    <div class="row">
+        @foreach (var announcement in Model.Announcements)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@announcement.Title</h5>
+                        <p class="card-text">@announcement.Content</p>
+                        <p class="card-text"><small class="text-muted">@announcement.DatePosted.ToString("g")</small></p>
+                        <a href="@Url.Page("/Announcements/Details", new { id = announcement.Id })" class="btn btn-primary">See More</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    
+</div>
